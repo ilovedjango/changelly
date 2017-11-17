@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="main_wrapper" style="">
+    <style type="text/css">
+    .bg-wrapper {
+        font-size: 16px;
+    }
+
+    .pay-col-wide {
+        background-color: #fff;
+        border: 1px solid #cfcfcf;
+        border-radius: 4px;
+        float: left;
+        margin-left: 25%;
+        padding: 15px;
+        width: 50%;
+    }
+
+    .pay-col-row {
+        -moz-box-align: stretch;
+        -moz-box-direction: normal;
+        -moz-box-orient: horizontal;
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .addr-col {
+        position: relative;
+        text-align: left;
+        width: 100%;
+    }
+
+    .addr-col .clipboard_container {
+        padding-left: 15px;
+        padding-right: 15px;
+        text-align: center;
+    }
+
+    .addr-col .address_container {
+        text-align: center;
+    }
+
+    .address {
+        color: #000;
+        font-size: 16px;
+        overflow-wrap: break-word;
+    }
+
+    .clipboard {
+        color: #00cf70;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        position: relative;
+    }
+    </style>
+    <div data-reactid=".2glibnov3nu.1.0">
+        <div data-reactid=".2glibnov3nu.1.0.0">
+            <div class="container-fluid transaction-progress" data-reactid=".2glibnov3nu.1.0.0.0">
+                <div class="container" data-reactid=".2glibnov3nu.1.0.0.0.0">
+                    <div class="row" data-reactid=".2glibnov3nu.1.0.0.0.0.0">
+                        <div class="col-xs-8 col-xs-offset-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0">
+                            <div class="row icons" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0">
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.0"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAUCAMAAACpgK3LAAAAnFBMVEUQ0Hj///8Q0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQom9PAAAAM3RSTlMAAAEDBwkKDQ8gKTY3PUJDSUtNTlJeX2RnfIeTn6Wqq6y/yMnV3d7f5ebo6evs8PX6/P4vNZ2sAAAAt0lEQVR4AVXMBQrFUAxE0fnu7u5ab/a/tkp4Ic1FhwODWg1AfbrfT+sAahxcjN0bFd26ikPFC3FXxXAo2CNXDxKxljgXnCuyljgSHAFYyQgHjM0/cf8m0I9ItUQsk3IkS6D9JMUhI8YPoscEwNGY1GqhmpqNv9Q6m/Mrit7nTUcQYvWtTy5/W3forHGiSqcGo7Qj065ECYHFwODX4s/gOq1aujaIxUfts4BFNGaHuxfH3v0wa8BgDsuMLYCmJho5AAAAAElFTkSuQmCC" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.0.0"></div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.1"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAMAAACTisy7AAABjFBMVEUQ0Hj///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8Q0HgS0HkU0XoV0XsX0XwY0n0b0n4d038e04Ai1IIn1YUp1YYr1Ycs1ogw1oo32I472JA+2ZJB2pRL3JlN3JpV3p9W3qBl4ahn4alq4qtr4qts4qxv461w465x46935LJ/5raA5reA5riF57qG57uH57uM6L6Q6cGT6sKX68Sj7cum7c2t79Cx8NO08NXE897F9N7G9N/H9N/I9ODN9ePP9uTQ9uXR9uXT9ubU9+fV9+fW9+jf+e3j+e/m+vHo+vLp+/Lp+/Pq+/Pt+/Xu/PXv/Pbw/Pfx/Pf0/fn2/fr3/fr4/vv8/v3+//7///89nPj3AAAANXRSTlMAAAEFBwkTFRYXGBkaHR4iKDEyNTY3ODw9S05papKora6xt7i5urvD0NHS19vc7/Dx+/z9/gfUT6AAAAGbSURBVHgBdZKDegQxFEZT27Zt27bbtW3b/4s3k7XOx7lnklyRLFUtHT29HS1VFRlSonlodHkTjM3l0eHmHDkwxYmE06rXW50JAFuzAylZNwlEFV83BzuMg5svRRSYrOdkwzKCfyc7eZz8BrDcSOUYjOc7RZwbMV5BGrej1JWw0e1G0g/dTkl06Cft8ByUcgdutBOyCOlesduTYpEmNAJo7wrdnRYYqSDVqwghofq8ypqLD1WCBteqSTdsp5IwAI9KJhYKxTKVC0BYcmpDF+mFeWfn6FXpRwa/8vVoZ8eCHlKzjqcdjsuHtx++4Oft4ZJ9PmK9hkso9rVbmNDuV4xLiMwDsDwf5aqjZzOAhQraBO+LA4hpRG/3t1dXt/dvIk0McLx40c7ad/iqiiOHuPr1kLWvcTtyRm86fuTJdCa73aST8R6PaeAsQhtPJsqNbIIm1LQE3/dRvjr69mGpiUpSOw1E5O/X+0mxf/0ujwAztakFG5xjaTgMWq3BwVKbG6zMrmbb0OjKBhgbK6NDbRWM3KVu7ezr62zNWep/A4+zidYPQtUAAAAASUVORK5CYII=" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.1.0"></div>
+                                <div class="col-xs-2" style="margin-left:-3px;" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.2"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAUCAMAAACpgK3LAAAAnFBMVEUQ0Hj///8Q0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQom9PAAAAM3RSTlMAAAEDBwkKDQ8gKTY3PUJDSUtNTlJeX2RnfIeTn6Wqq6y/yMnV3d7f5ebo6evs8PX6/P4vNZ2sAAAAs0lEQVR4AVXQUxbFQBBF0fts24iNmv/YgsZK1/ndzUKPBaC/vd+3faARjdBNf9T0mzJcKvyQ6MswlToj1axFHUnda9wzlLrSuJJ4IlW6AIYhicKhwHlGph4LaiqOaHFsa1IHry0iawOBT2ai0QjgaWPpfyqbXN5Olrnvy8REYf1rTKr42u+wtcGLjF4DNvgbsW4ahSccE4Y+x4DhuTStPDPEwevMO4AjBrvHP8rz6P/YDYAavDgtm0k7XrkAAAAASUVORK5CYII=" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.2.0"></div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVCAMAAABmKa5TAAAAb1BMVEUQ0Hj///////////////////////////////////////////////8Q0HgQ0Hj///////////////8Q0HgX0Xwv1okw1oo22I5B2pRT3Z5V3p9a36K78ti88tnO9ePj+e/l+vDn+vH4/vv7/v3///+6VbeUAAAAE3RSTlMAAAQLDBoeMTRGSnSww8TH3N3hMoBlkQAAAKBJREFUeAF9zgWChTAMRdF+w91d3/7XOCVYMnZxDrRVjz960vkPNkOE5p/sYsuRLHQlV7yX67lvpTbtyxFIBFsRdC5plhbaDeWnZ9WEM61pTpxeDcDS9lyTx/13prVOs/5SubQPMBdpmnVMGasYGDdnytkGyJmec1MNOVPNBMKZ8r9PJ1UHyxxNpJy5J0CilbHMMOgi55b5F6e/9v/fwclf3tUhDqfooCQAAAAASUVORK5CYII=" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.3.0"></div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.4"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAATCAMAAABWWYYKAAAAPFBMVEUQ0Hj///8Q0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0HgQ0Hh5oW1WAAAAE3RSTlMAAAMSG0h8gIGDh8PG2Orr9vz+0qytbgAAAFdJREFUeAGd0bUBBCEUANF/uq7Tf68b4c6kD0deXvIRVWjnlDYYM8YgicggLn53dBcOvheCFM6Qwt9NCr8H8cbYZopkTpOsuF2KYimKvaeihI09f7T9FT3QJBBNj9M6sAAAAABJRU5ErkJggg==" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.4.0"></div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.5"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAUCAYAAABxnDbHAAAACXBIWXMAAAsSAAALEgHS3X78AAABoUlEQVRIx6WV3VEjMRCEP7t4xxn0ZnAmApwBEAEiA4fgy8AXwS0ZcBFgMvBloMkAR7C8DK5hT6uVj6lS1dZqpJ6fnhbDMNC6cs7pEv+pteQyS2bW801b/seZx+8CX01tmNkKSMAq/O4CMJJSK5CZbYA1kBfDMJQc1kAP/Ji565ekbQUoAffAXTVTd9wD1w0JHCfA7v0OFbbfSuXNHl3J9iH7J0l9oSV74LEWaLG8lXIdgNsK4GHUkhtgOwri4R9Q7+d6fGkA7eOemXVOuI0HdDZJC/fJXuqTpNVVAfDgJSrZVtIx+Pe1UjpjU+ht/4VIAXCSQCPAud4BvIbvE7A7gxYAN2a2i+QqlDv7RdeNlNhJegdY5Jw7p/7c4T9A+jwYMj42zPNzFJKlpAy8NER6Bxy9KtEuAgQ4s3dEip+SdjPjs3ZZA/hd4cFiUvA9mufGee2cA8l7/TTh+ndW8CUlM2sihXPg1sw+tffBH4eotcXRmxL8zns9len7iHgnSaswm6+lXlbf0xqgWwR8C71F0gG4qT17F2lvyHTrpXyJgtFqH0K6F7DTaNy4AAAAAElFTkSuQmCC" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.0.5.0"></div>
+                            </div>
+                            <div class="row icons" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1">
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1.0">From</div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1.1">Amounts</div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1.2">Send to</div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1.3">Confirmation</div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1.4">Sending</div>
+                                <div class="col-xs-2" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.1.5">Exchanging</div>
+                            </div>
+                            <div class="row" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.2">
+                                <div class="col-xs-12" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.2.0">
+                                    <div class="progress" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.2.0.0">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="83.5" aria-valuemin="0" aria-valuemax="100" style="width:83.5%;" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.2.0.0.0"></div>
+                                        <div class="triangle" data-reactid=".2glibnov3nu.1.0.0.0.0.0.0.2.0.0.1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-wrapper" data-reactid=".2glibnov3nu.1.0.1">
+            <div class="container" data-reactid=".2glibnov3nu.1.0.1.0">
+                <div class="row send-row" data-reactid=".2glibnov3nu.1.0.1.0.0">
+                    <div class="send-info" data-reactid=".2glibnov3nu.1.0.1.0.0.0">
+                        <div class="warning-common" data-reactid=".2glibnov3nu.1.0.1.0.0.0.0">
+                            <noscript data-reactid=".2glibnov3nu.1.0.1.0.0.0.0.0"></noscript>
+                        </div>
+                        <div class="transaction-id text-center" data-reactid=".2glibnov3nu.1.0.1.0.0.0.1"><span data-reactid=".2glibnov3nu.1.0.1.0.0.0.1.0">Transaction ID: </span><span class="text-bold" data-reactid=".2glibnov3nu.1.0.1.0.0.0.1.1">{{ unique_id }}</span></div>
+                        <h3 class="text-center" data-reactid=".2glibnov3nu.1.0.1.0.0.0.2"><span data-reactid=".2glibnov3nu.1.0.1.0.0.0.2.0">Send </span><span data-reactid=".2glibnov3nu.1.0.1.0.0.0.2.1">{{ from_amount }} {{ hdn_from_currency }}</span><span data-reactid=".2glibnov3nu.1.0.1.0.0.0.2.2"> to the address below</span></h3>
+                        <div class="text-center" data-reactid=".2glibnov3nu.1.0.1.0.0.0.3">The whole amount should be sent as one transaction</div>
+                    </div>
+                    <br data-reactid=".2glibnov3nu.1.0.1.0.0.1">
+                    <br data-reactid=".2glibnov3nu.1.0.1.0.0.2">
+                    <div class="row pay-col_container animated" data-reactid=".2glibnov3nu.1.0.1.0.0.3">
+                        <div class="pay-col-wide" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0">
+                            <div class="pay-col-row" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0">
+                                <div class="addr-col" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0">
+                                    <div class="clipboard_container" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0.0">
+                                        <div class="address_container" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0.0.0"><span class="address" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0.0.0.0">{{ wallet }}</span></div>
+                                        <div data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0.0.1">
+                                            <noscript data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0.0.1.0"></noscript>
+                                        </div>
+
+                                        <div class="qr-code" data-reactid=".2glibnov3nu.1.0.1.0.0.3.0.0.0.0.3"><img src="https://chart.googleapis.com/chart?chs=250x250&amp;cht=qr&amp;chl={{ wallet }}&amp;choe=UTF-8" alt="QR code"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br data-reactid=".2glibnov3nu.1.0.1.0.0.4">
+                    <br data-reactid=".2glibnov3nu.1.0.1.0.0.5">
+                    <div class="" data-reactid=".2glibnov3nu.1.0.1.0.0.7">
+                        <div class="troubles" data-reactid=".2glibnov3nu.1.0.1.0.0.7.0" align="center"><span data-reactid=".2glibnov3nu.1.0.1.0.0.7.0.0"><a href="#">Having troubles?</a></span></div>
+                        <table class="options animated" data-reactid=".2glibnov3nu.1.0.1.0.0.7.1">
+                            <tbody data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0">
+                                <tr data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.0">
+                                    <td data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.0.0">
+                                        <div class="dot" data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.0.0.0">1</div>
+                                    </td>
+                                    <td data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.0.1"><span data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.0.1.0">Check your transaction in </span><a target="_blank" href="https://minergate.com/blockchain/ltc/blocks" data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.0.1.1">block explorer</a></td>
+                                </tr>
+                                <tr data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1">
+                                    <td data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.0">
+                                        <div class="dot" data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.0.0">2</div>
+                                    </td>
+                                    <td data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.1"><span data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.1.0">Contact </span><a href="#" data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.1.1">support</a>
+                                        <br data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.1.2"><span data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.1.3">Your transaction #</span><span data-reactid=".2glibnov3nu.1.0.1.0.0.7.1.0.1.1.4">a0af090fb248</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-reactid=".2glibnov3nu.1.0.4"></div>
+        <div data-reactid=".2glibnov3nu.1.0.5"></div>
+    </div>
+
+
+{% endblock %}
